@@ -1,18 +1,16 @@
-[metadata]
-name = "repair-flask-keybroker-security"
-difficulty = "hard"
-language = "python"
-milestone_count = 1
-
-[resources]
-timeout_seconds = 900
-cpu_limit = 2
-memory_limit_mb = 2048
+[task]
+id = "repair-flask-keybroker-security"
+name = "Repair Flask Keybroker Security Configuration"
+version = "1.0.0"
+description = "Secure initialization routines, enforce strict JWT claims validation, and implement database-level key rotation metrics."
+category = "Security & Back-End Web Engineering"
 
 [environment]
-os = "linux"
-dockerfile = "environment/Dockerfile"
+image = "flask-keybroker-test"
+workspace_dir = "/workspace"
 
-[scoring]
-points_total = 100
-allow_partial_credit = false
+[evaluation]
+test_script = "bash tests/test.sh"
+log_path = "/logs/verifier/pytest_output.log"
+reward_path = "/logs/verifier/reward.txt"
+type = "binary"

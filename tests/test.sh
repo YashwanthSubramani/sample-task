@@ -1,5 +1,7 @@
 #!/bin/bash
-cd /app
+
+# Dynamically navigate to the project root directory relative to this script
+cd "$(dirname "$0")/.."
 
 # Point directly to the unified tests/test_outputs.py file
 pytest tests/test_outputs.py -v --tb=short > /logs/verifier/pytest_output.log 2>&1
